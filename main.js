@@ -1,48 +1,55 @@
-// Иницализация переменных
-var str = "String";
-var num = 15;
-var log = true;
-var mass = ['str', 13, 3, 14];
-var object = {
-  name: "Steve"
+//Выведите в консоль любую строку. Если выводимая строка пустая - отобразите строку текста по умолчанию.
+var String = "This is string"
+newString = String || 'Default string';
+console.log(newString);
+//Создайте любой объект, например "браузер" и вывидете в консоль все его поля. + //Cоздать метод для этого объекта
+var Browser = {
+  name: "Google",
+  version: 8.1,
+  rank: 1,
+  sayHi: function(){
+    return 'This is method?)';
+  }
 };
-//Вывод переменных в консоль
-console.log(str);
-console.log(num);
-console.log(log);
-console.log(mass);
-console.log(object);
-//Преобразование целого
-console.log(num.toFixed(2));
-//Префиксный и постфиксный инкремент для i
-var i = 65;
-console.log(i++);
-console.log(++i);
-//Присваивание с операцией, используя операторы: +=, -=, *=, /=, %=
-console.log(num+=10);
-console.log(num-=12);
-console.log(num*=3);
-console.log(num/=13);
-console.log(num%=2);
-//Вывод числа Pi в консоль
-console.log(Math.PI);
-//Округленное значения числа 89.279
-console.log(89.279.toFixed(1));
-//Случайное число между 0 и 10
-console.log(Math.floor(Math.random() * (9 - 1 + 1)) + 1);
-//2 в 5 степени
-console.log(Math.pow(2,5));
-//Длинна строки
-console.log(str.length);
-//Поиск подстроки. При удачном поиске 0, при не удачном -1
-console.log(str.indexOf('Str'));
-//Переименование подстроки в строке
-var re = "Hello";
-console.log(str.replace(str.slice(0,3), re));
-//Перевод строки в верхний и нижний регистры
-var str1 = "walkingbyurself";
-var str2 = "ANDREWSISTERS";
-console.log(str1);
-console.log(str2);
-console.log(str1.toUpperCase());
-console.log(str2.toLowerCase());
+console.log(Browser.name);
+console.log(Browser.version);
+console.log(Browser.rank);
+console.log(Browser.sayHi());
+//Cделайте цикл for от 1 до 20 и выведите в консоль только чётные значения
+for (var i = 1; i < 20; i++){
+  if (i % 2 == 0){
+    console.log(i);
+  }
+}
+//Создайте любой код, используя конструкцию switch/case/default
+var Name = 'Alex',
+  Status;
+  switch(Name){
+    case 'Tom': Status = 'Driver'; break;
+    case 'Sam': Status = 'Manager'; break;
+    default: Status = 'still nobody';
+  }
+  console.log(Name + ' ' + Status);
+  //Создайте условие, используя тернарный оператор ?
+  var a = 2;
+  var b = 1;
+  if (a === b){
+    console.log('a равно b') }
+    else {
+      console.log('a не равно b')
+    }
+// Выводите значение переменной, пока не достигнуто значение 7 (используя цикл while)
+var i = 0;
+while (i <= 7){
+  console.log(i);
+  i++;
+}
+// Функция с callback
+function myArg (arg1, arg2, callback){
+  console.log("Число " + arg1 + " в степени " + arg2);
+  var arg3 =  (Math.pow(arg1, arg2));
+  callback(arg3);
+}
+myArg(2, 4, function(arg3){
+  console.log("Результат " + arg3);  
+});
