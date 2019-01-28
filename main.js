@@ -1,82 +1,57 @@
-//Cчётчик замыкания и число в качестве аргумента 
+//Работа со строчным массивом и методом filter
 
-var counter =  (function () {
-  var count = 0;
-
-  return function (num) {
-    count = num !== undefined ? num : count;
-    return count++;
-  };
-}());
-
-console.log(counter());
-console.log(counter());
-console.log(counter());
-console.log(counter(100));
-console.log(counter());
-console.log(counter());
-console.log(counter(0));
-console.log(counter());
-console.log(counter());
-
-// Cоздайте несколько однотипных объектов и определите для них метод используя ключевое слово this
-
-var greet = function() {
-  return 'This car is ' + this.colour;
-};
-var car = {
-  name: 'Subaru',
-  colour: 'Blue',
-  greet: greet
-}
-
-var oneMoreCar = {
-  name: 'Kia',
-  colour: 'Silver',
-  greet: greet
-}
-console.log(car.greet())
-console.log(oneMoreCar.greet());
-
-// Добавьте к объекту новое свойство, используя геттер и сеттер 
-
-var greet = function() {
-  return 'This car is ' + this.colour;
-};
-var car = {
-  name: 'Subaru',
-  colour: 'Blue',
-  _mileage: 20000,
-  get miliage(){
-    return this._mileage;
-  },
-  set miliage(value){
-    this._mileage = value < 0 ? 0 : value ;
+var stringa = ['Lorem ipsum', 'Blanditiis, eaque', 'Iure, quis', 'Iure, voluptatum',
+'Maxime, veniam', 'Inventore, a', 'Eius, qui', 'Accusantium, amet', 'Nemo, eos', 'Vero, quos'];
+var positiveString = stringa.filter(function(str){
+  if(str.indexOf('o') !== -1) {
+    return true;
   }
+
+});
+
+alert(positiveString);
+
+// Отобразите текущую дату и время в следующих форматах
+// а)
+
+var today = new Date(). toISOString();
+alert( today );
+
+// b)
+
+var day = new Date();
+alert (day);
+
+//getWeekDay
+
+function getWeekDay(date) {
+  var days = ["Воскресенье", "Понедельник", "Вторник", "Среда", "Четверг", "Пятница", "Суббота"];
+  return days[date.getDay()];
 }
 
-var oneMoreCar = {
-  name: 'Kia',
-  colour: 'Silver',
-  mile: 10000,
-   get mile(){
-    return this._mile;
-  },
-  set mile(value){
-    this._mile = value < 0 ? 0 : value ;
-  }
+var date = new Date(1999, 2, 13)
+alert(getWeekDay(date));
+
+// local date
+
+function getLocaleDay(date) {
+  return [date.getDay()];
 }
 
-car.miliage = -20;
-console.log(car.miliage);
-car.miliage = 0;
-console.log(car.miliage);
-car.miliage = 2000;
-console.log(car.miliage);
+var date = new Date(2019, 0, 1)
+alert(getLocaleDay(date));
 
-oneMoreCar.mile = -10;
-console.log(oneMoreCar.mile);
-oneMoreCar.mile = 0;
-console.log(oneMoreCar.mile);
-oneMoreCar.mile = 1000;
-console.log(oneMoreCar.mile);
+//getDateAgo
+
+function getDateAgo(date, days) {
+  var dateCopy = new Date(date);
+
+  dateCopy.setDate(date.getDate() - days);
+  return dateCopy.getDate();
+}
+
+var date = new Date(2015, 0, 2);
+
+alert( getDateAgo(date, 1) ); 
+alert( getDateAgo(date, 2) ); 
+alert( getDateAgo(date, 365) ); 
